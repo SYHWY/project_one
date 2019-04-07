@@ -1,0 +1,58 @@
+{% macro render_articals(artical,tags) %}
+<div class="container">
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+			<h2>
+				Head: {{artical.title}} <small>-----{{artical.time.strftime("%b %d %Y %H:%M:%S")}}</small>
+			</h2>
+			<p>
+				{{artical.abstruct}}
+			</p>
+			<div class="row clearfix">
+				<div class="col-md-12 column">
+					{% for tag in tags%}
+					 <span class="label label-danger" style="margin:2px;">{% if tag.artical_id==artical.id%}{{tag.themes.name}}{%endif%}</span>
+					{% endfor %}
+				</div>
+			</div>
+			<p>
+				 <a class="btn" href="{{url_for('show_page',artical_id=artical.id)}}">View details »</a>
+			</p>
+			<ul class="nav nav-pills">
+				<li class="active">
+					 <a href="#"> <span class="badge pull-right">{% if artical.likes%}{{artical.likes}}{%else %}{{0}}{%endif%}</span> Likes  </a>
+				</li>
+				<li >
+					 <a href="#"style="background-color:lightcoral; color:white;"> <span class="badge pull-right">{% if artical.unlikes%}{{artical.unlikes}}{%else %}{{0}}{%endif%}</span> disLikes</a>
+				</li>
+				<li class="active">
+					<a href="#"> <span class="badge pull-right">{% if artical.visitis %}{{artical.visitis}}{%else %}{{0}}{%endif%}</span> Visitis  </a>
+			   </li>
+			</ul>
+		</div>
+	</div>
+</div>
+{% endmacro %}
+{% macro render_comments(comment,id)%}
+<div class="container">
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+			<blockquote>
+				<p>
+					{{comment.content}}.
+				</p> <small>{{'****'+comment.users.mail[3:]}} <cite>{{comment.time.strftime("%b %d %Y %H:%M:%S")}}</cite></small>
+				<br>
+				<ul class="nav nav-pills">
+					<li class="active">
+						 <a href="{{url_for('comment_up',id = comment.id,artical_id = id )}}"> <span class="badge pull-right">{% if comment.likes%}{{comment.likes}}{%else %}{{0}}{%endif%}</span> Likes  </a>
+					</li>
+					<li >
+						 <a href="{{url_for('comment_down',id = comment.id,artical_id = id )}}"style="background-color:lightcoral; color:white;"> <span class="badge pull-right">{% if comment.unlikes%}{{comment.unlikes}}{%else %}{{0}}{%endif%}</span> disLikes</a>
+					</li>
+				</ul>
+			</blockquote>
+			
+		</div>
+	</div>
+</div>
+{% endmacro%}

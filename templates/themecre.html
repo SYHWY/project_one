@@ -1,0 +1,10 @@
+{% extends "basement.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block title %}themecre{% endblock %}
+{% block page_content %}
+<div class="page-header">
+    <h1>Let's Create a new theme</h1>
+</div>
+{{ wtf.quick_form(form) }}
+<img class="verify_code" src="{{url_for('get_code')}}" onclick="this.src='/code?'+ Math.random()">
+{% endblock %}

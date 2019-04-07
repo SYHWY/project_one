@@ -1,0 +1,41 @@
+{% extends "basement.html" %}
+{% import 'macros.html' as macros %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block title %}artical{% endblock %}
+{% block page_content %}
+<div class="container">
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+			<h3>
+			 {{artical.title}} 
+			</h3>
+			<p>
+				{{artical.abstruct}}Git是一个分布式的版本控制系统，最初由编写，用作Linux内核代码的管理。在推出后，Git在其它项目中也取得了很大成功，尤其是Ruby社区中。
+            </p> <a href="{{url_for('download_file',filepath=artical.path)}}"> <button type="button" class="btn btn-primary btn-default" >download</button></a>
+            <br><br>
+            <ul class="nav nav-pills">
+				<li class="active">
+						<a href="{{url_for('vote_up',id=artical.id)}}" > <span class="badge pull-right">{% if artical.likes%}{{artical.likes}}{%else %}{{0}}{%endif%}</span> Likes  </a>
+				</li>
+				<li >
+					<a href="{{url_for('vote_down',id=artical.id)}}"style="background-color:lightcoral; color:white;"> <span class="badge pull-right">{% if artical.unlikes%}{{artical.unlikes}}{%else %}{{0}}{%endif%}</span> disLikes</a>
+				</li>
+		</div>
+	</div>
+</div>
+<br><br>
+{{ wtf.quick_form(form) }}
+<img class="verify_code" src="{{url_for('get_code')}}" onclick="this.src='/code?'+ Math.random()">
+ 
+<div class="page-header">
+    <h1>What do they SAY</h1>
+</div>
+{% if comments%}
+{% for comment in comments %}
+{{ macros.render_comments(comment,artical.id) }}
+{% endfor %}
+{% else %}
+<h1> No comments now , U can say something</h1>
+{% endif%}
+
+{% endblock %}

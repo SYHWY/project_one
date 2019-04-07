@@ -1,0 +1,12 @@
+{% extends "basement.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block title %}Indite{% endblock %}
+{% block page_content %}
+<div class="page-header">
+    <h1>Lets' Upload </h1>
+</div>
+{{ wtf.quick_form(form) }}
+<h1>IF THERE NO SUBJECT OR THEME U LIKE</h1>
+<h2>U CAN CREATE OBJECT U LIKE <a class="btn" href="/subCreate">CREATE new Subeject »</a> </h2> 
+<h2>U CAN CREATE THEMES U LIKE <a class="btn" href="/themecre">CREATE new ThemeS »</a> </h2> 
+{% endblock %}

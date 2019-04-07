@@ -1,0 +1,17 @@
+{% extends "basement.html" %}
+{% import 'macros.html' as macros %}
+
+{% block title %}Home{% endblock %}
+{% block page_content %}
+<div class="page-header">
+    <h1>welcome OAPS</h1>
+</div>
+<div>here are hot articles</div>
+
+<div>
+{% for artical in articals %}
+{{ macros.render_articals(artical,tags) }}
+{% endfor %}
+</div>
+
+{% endblock %}

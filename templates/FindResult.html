@@ -1,0 +1,20 @@
+{% extends "basement.html" %}
+{% import 'macros.html' as macros %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}ResultFind{% endblock %}
+{% block page_content %}
+<div class="page-header">
+    <h1>Here are What U Want</h1>
+</div>
+
+<div>
+    {% if articals %}
+    {% for artical in articals %}
+    {{ macros.render_articals(artical,tags) }}
+    {% endfor %}
+    {% else%}
+    <h1>NOT ARTICLES YET</h1>
+    {% endif %}
+</div>
+{% endblock %}

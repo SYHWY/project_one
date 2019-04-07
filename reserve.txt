@@ -1,0 +1,7 @@
+{% for artical in articals %}
+{{ macros.render_articals(artical)}}
+{% endfor %}
+
+FileAllowed('pdf', 'PDF only!'),
+<a href="download_file(statics\JavaScript6.pdf)" style="color:white'">
+,filepath='statics\JavaScript6.pdf'

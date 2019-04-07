@@ -1,0 +1,9 @@
+{% extends "basement.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block title %}ArticalFind{% endblock %}
+{% block page_content %}
+<div class="page-header">
+    <h1>Let's Find By Article</h1>
+</div>
+{{ wtf.quick_form(form) }}
+{% endblock %}
