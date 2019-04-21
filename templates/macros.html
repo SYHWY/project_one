@@ -28,6 +28,7 @@
 				<li class="active">
 					<a href="#"> <span class="badge pull-right">{% if artical.visitis %}{{artical.visitis}}{%else %}{{0}}{%endif%}</span> Visitis  </a>
 			   </li>
+				
 			</ul>
 		</div>
 	</div>
@@ -48,6 +49,9 @@
 					</li>
 					<li >
 						 <a href="{{url_for('comment_down',id = comment.id,artical_id = id )}}"style="background-color:lightcoral; color:white;"> <span class="badge pull-right">{% if comment.unlikes%}{{comment.unlikes}}{%else %}{{0}}{%endif%}</span> disLikes</a>
+					</li>
+					<li >
+						 <a href="{{url_for('comment_down',id = comment.id,artical_id = id )}}"style="background-color:lightcoral; color:white;"> <span class="badge pull-right">{%endif%}</span> delete</a>
 					</li>
 				</ul>
 			</blockquote>
