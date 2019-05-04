@@ -536,6 +536,15 @@ def SubjectFind_page():
         return render_template('FindResult.html',articals = articals,tags = tags)
     return render_template('SubjectFind.html',form=form)
 
+#---------------------------comment delete------------------------------------
+@app.route('/delete',methods=['GET','POST'])
+def comment_delete():
+    form = deletet()
+    if form.validate_on_submit():
+        subject = admin.query.filter_by(mail = form.subject.data).first()
+        return render_template('delete_success.html')
+    return render_template('delete_fail.html')
+
 
 #-----------------------------download file--------------------------------
 @app.route("/download/<filepath>", methods=['GET','POST'])
