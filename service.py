@@ -104,7 +104,7 @@ app.config['SECRET_KEY'] = 'shuaiqisong'
 #     username = db.Column(db.String(64), unique=True, index=True)
 #     role_id = db.Column(db.Integer, db.ForeignKey('roles.id'))
 class admin(db.Model):
-    __tablename__ = admin"
+    __tablename__ = 'admin'
     id = db.Column(db.Integer,primary_key=True)
     mail = db.Column(db.Text,unique=True)
 class User(db.Model):
