@@ -103,7 +103,7 @@ app.config['SECRET_KEY'] = 'shuaiqisong'
 #     id = db.Column(db.Integer, primary_key=True)
 #     username = db.Column(db.String(64), unique=True, index=True)
 #     role_id = db.Column(db.Integer, db.ForeignKey('roles.id'))
-class admin(db.Model):
+class Admin(db.Model):
     __tablename__ = 'admin'
     id = db.Column(db.Integer,primary_key=True)
     mail = db.Column(db.Text,unique=True)
@@ -192,7 +192,6 @@ class themecre(FlaskForm):
 class MailForm(FlaskForm):
     mail = html5.EmailField('E-mail Putting Please', validators=[Email(),Required()])
     submit = SubmitField('submit')
-
 
 #----------------------------------subject form ---------------------------------
 class SubjectForm(FlaskForm):
@@ -538,11 +537,15 @@ def SubjectFind_page():
 
 #---------------------------comment delete------------------------------------
 @app.route('/delete',methods=['GET','POST'])
-def comment_delete():
-    form = deletet()
+def comment_delete(comment_id):
+    form = MailForm()
     if form.validate_on_submit():
-        subject = admin.query.filter_by(mail = form.subject.data).first()
-        return render_template('delete_success.html')
+        admin = Admin.query.filter_by(mail = form.mail.data).first()
+        if admin==None:
+            return render_template('delete_fail.html')
+        else:
+            #----to delete-----
+            return render_template('delete_success.html')
     return render_template('delete_fail.html')
 
 
