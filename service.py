@@ -545,6 +545,8 @@ def comment_delete(comment_id):
             return render_template('delete_fail.html')
         else:
             #----to delete-----
+            comment = Comment.query.filter_by(id = comment_id).first()
+            db.session.delete(comment)
             return render_template('delete_success.html')
     return render_template('delete_fail.html')
 
