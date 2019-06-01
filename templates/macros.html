@@ -51,7 +51,7 @@
 						 <a href="{{url_for('comment_down',id = comment.id,artical_id = id )}}"style="background-color:lightcoral; color:white;"> <span class="badge pull-right">{% if comment.unlikes%}{{comment.unlikes}}{%else %}{{0}}{%endif%}</span> disLikes</a>
 					</li>
 					<li >
-						 <a href="{{url_for('comment_down',id = comment.id,artical_id = id )}}"style="background-color:lightcoral; color:white;"> <span class="badge pull-right">{%endif%}</span> delete</a>
+						 <a href="{{url_for('comment_delete',id = comment.id)}}"style="background-color:lightcoral; color:white;"> <span class="badge pull-right">{%endif%}</span> delete</a>
 					</li>
 				</ul>
 			</blockquote>
